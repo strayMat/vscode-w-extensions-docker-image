@@ -12,6 +12,7 @@ RUN /opt/install-terminal-utils.sh && \
     /opt/install-vscode-extensions.sh
 
 # set zsh as default shell
+#FIXME: this does not seem  to work when creating a new terminal in VSCode
 RUN chsh -s $(which zsh)
 
 USER 1000

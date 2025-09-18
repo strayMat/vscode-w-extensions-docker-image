@@ -80,7 +80,7 @@ if [ "$THEME" = "default" ]; then
 fi
 
 # Install xan for easy csv manipulation in terminal
+# FIXME: xan installation takes forever so maybe remove that and just download binaries
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 export PATH="$HOME/.cargo/bin:$PATH"
-
 cargo install xan
