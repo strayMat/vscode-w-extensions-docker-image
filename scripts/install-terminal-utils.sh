@@ -63,6 +63,22 @@ done
 # Generate .zshrc
 zshrc_template "$HOME" "$THEME" "$plugin_list" > "$HOME"/.zshrc
 
+powerline10k_config() {
+    cat <<EOM
+POWERLEVEL9K_SHORTEN_STRATEGY="truncate_to_last"
+POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(user dir vcs status)
+POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=()
+POWERLEVEL9K_STATUS_OK=false
+POWERLEVEL9K_STATUS_CROSS=true
+EOM
+}
+
+# Install powerlevel10k if no other theme was specified
+if [ "$THEME" = "default" ]; then
+    git clone --depth 1 https://github.com/romkatv/powerlevel10k "$HOME"/.oh-my-zsh/custom/themes/powerlevel10k
+    powerline10k_config >> "$HOME"/.zshrc
+fi
+
 # Install xan for easy csv manipulation in terminal
 curl https://sh.rustup.rs -sSf | sh -s -- -y
 export PATH="$HOME/.cargo/bin:$PATH"

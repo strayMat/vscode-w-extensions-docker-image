@@ -11,5 +11,7 @@ COPY --chmod=0755 scripts/ /opt/
 RUN /opt/install-terminal-utils.sh && \
     /opt/install-vscode-extensions.sh
 
+# set zsh as default shell
+RUN chsh -s $(which zsh)
 
 USER 1000
